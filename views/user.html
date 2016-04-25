@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if (user) %}
+  {% include "say.html" %}
+{% endif %}
+
+{% include "posts.html" %}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }} - miniwebsite</title>
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
+<script src="javascripts/jquery.js"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">MiniWebsite</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/">首頁</a></li>
+          {% if (!user) %}
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+          {% else %}
+            <li><a href="/logout">登出</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="container" class="container">
+
+    {% include "./tools.html" %}
+
+    {% if (success) %}
+      {{ msgbox("Operation Completed", success) }}
+    {% endif %}
+    {% if (error) %}
+      {{ msgbox("Error Occurred", error) }}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    <hr />
+    <footer>
+      <p><a href="http://www.miniwebsite.com/" target="_blank">Bestsoft2Go</a> 2016</p>
+    </footer>
+  </div>
+
+</body>
+
+<script src="javascripts/bootstrap.js"></script>
+</html>

@@ -1,0 +1,17 @@
+{% for post in posts %}
+  {% if (loop.index0 % 3 == 0) %}
+    <div class="row">
+  {% endif %}
+  <div class="col-md-4">
+    <h5><a href="/u/{{ post.username }}">{{ post.username }}</a> 說</h5>
+    <p><small>{{ post.time|date('Y-m-d H:i:s', -480) }}</small></p>
+    <p>{{ post.post }}</p>
+  </div>
+  {% if (loop.index0 % 3 == 2) %}
+    </div><!-- end row -->
+  {% endif %}
+{% endfor %}
+{% if (posts.length % 3 != 0) %}
+  </div><!-- end row -->
+{% endif %}
+
